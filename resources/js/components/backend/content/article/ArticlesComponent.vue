@@ -43,7 +43,7 @@
                      <tbody>
                        <tr v-for="item in articles" :key="item.id">
                               <th scope="row">{{ item.title }}</th>
-                              <td><span class="mt-2 badge badge-pill badge-success">Posted</span></td>
+                              <td><span class="mt-2 badge rounded-pill bg-primary">Posted</span></td>
                               <td>
                                  <p  v-html=" item.description"></p>
                               </td>
