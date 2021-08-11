@@ -1967,11 +1967,30 @@ var routes = [{
   },
   name: "stripe"
 }, {
-  path: '/payment/stripe/generate/link/',
+  path: "/new/article",
   component: function component() {
-    return setComponent("payment/Stripe/StripeLinkGen");
-  },
-  name: "Stripe Payment Link Generate"
+    return setComponent("content/article/CreateArticle");
+  }
+}, {
+  path: "/update/article/:id",
+  component: function component() {
+    return setComponent("content/CreateArticle");
+  }
+}, {
+  path: "/blogs",
+  component: function component() {
+    return setComponent("content/blog/Blogs");
+  }
+}, {
+  path: "/new/blog",
+  component: function component() {
+    return setComponent("content/blog/CreateBlog");
+  }
+}, {
+  path: "/update/blog/:id",
+  component: function component() {
+    return setComponent("content/blog/CreateBlog");
+  }
 }]; // 3. Create the router instance and pass the `routes` option
 // You can pass in additional options here, but let's
 // keep it simple for now.
@@ -61545,6 +61564,16 @@ var map = {
 		9,
 		"resources_js_components_ExampleComponent_vue"
 	],
+	"./components/backend/components/Breadcrumb": [
+		"./resources/js/components/backend/components/Breadcrumb.vue",
+		9,
+		"resources_js_components_backend_components_Breadcrumb_vue"
+	],
+	"./components/backend/components/Breadcrumb.vue": [
+		"./resources/js/components/backend/components/Breadcrumb.vue",
+		9,
+		"resources_js_components_backend_components_Breadcrumb_vue"
+	],
 	"./components/backend/components/StatisticsCard": [
 		"./resources/js/components/backend/components/StatisticsCard.vue",
 		9,
@@ -61564,6 +61593,16 @@ var map = {
 		"./resources/js/components/backend/content/article/ArticlesComponent.vue",
 		9,
 		"resources_js_components_backend_content_article_ArticlesComponent_vue"
+	],
+	"./components/backend/content/article/CreateArticleComponent": [
+		"./resources/js/components/backend/content/article/CreateArticleComponent.vue",
+		9,
+		"resources_js_components_backend_content_article_CreateArticleComponent_vue"
+	],
+	"./components/backend/content/article/CreateArticleComponent.vue": [
+		"./resources/js/components/backend/content/article/CreateArticleComponent.vue",
+		9,
+		"resources_js_components_backend_content_article_CreateArticleComponent_vue"
 	],
 	"./components/backend/dashboard/HomeComponent": [
 		"./resources/js/components/backend/dashboard/HomeComponent.vue",
@@ -61750,7 +61789,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_StatisticsCard_vue":1,"resources_js_components_backend_content_article_ArticlesComponent_vue":1,"resources_js_components_backend_dashboard_HomeComponent_vue":1,"resources_js_store_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_Breadcrumb_vue":1,"resources_js_components_backend_components_StatisticsCard_vue":1,"resources_js_components_backend_content_article_ArticlesComponent_vue":1,"resources_js_components_backend_content_article_CreateArticleComponent_vue":1,"resources_js_components_backend_dashboard_HomeComponent_vue":1,"resources_js_store_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

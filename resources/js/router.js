@@ -19,10 +19,27 @@ const routes = [{
         name: "stripe",
     },
     {
-        path: '/payment/stripe/generate/link/',
-        component: () => setComponent("payment/Stripe/StripeLinkGen"),
-        name: "Stripe Payment Link Generate",
+        path: "/new/article",
+        component: () => setComponent("content/article/CreateArticle")
     },
+    {
+        path: "/update/article/:id",
+        component: () => setComponent("content/CreateArticle")
+    },
+    {
+        path: "/blogs",
+        component: () => setComponent("content/blog/Blogs")
+
+    },
+    {
+        path: "/new/blog",
+        component: () => setComponent("content/blog/CreateBlog")
+    },
+    {
+        path: "/update/blog/:id",
+        component: () => setComponent("content/blog/CreateBlog")
+    },
+
 
 ]
 

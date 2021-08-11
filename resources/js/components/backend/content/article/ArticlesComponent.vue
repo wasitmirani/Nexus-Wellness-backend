@@ -1,5 +1,6 @@
 <template>
    <div>
+    <Breadcrumb current_name="Articles" ></Breadcrumb>
       <div class="row" id="table-bordered">
           <div class="col-12">
               <div class="row">
@@ -69,9 +70,11 @@
 </template>
 <script>
 import StatisticsCard from "../../components/StatisticsCard";
+import Breadcrumb from "../../components/Breadcrumb";
    export default {
     components:{
-        StatisticsCard
+        StatisticsCard,
+        Breadcrumb
     },
     data(){
         return {
@@ -86,15 +89,7 @@ import StatisticsCard from "../../components/StatisticsCard";
                       this.getBlogs();
                     }, 1000)
            },
-            openLoading() {
-                    const loading = this.$vs.loading()
-                    this.isloading=true;
-                    this.articles={};
-                    setTimeout(() => {
-                        loading.close()
-                         this.isloading=false;
-                    }, 1000)
-                    },
+
                 delete_Item(item){
                     Swal.fire({
                             title: 'Are you sure?',
@@ -119,7 +114,7 @@ import StatisticsCard from "../../components/StatisticsCard";
                             })
                 },
                getArticles(){
-                   this.openLoading();
+
                    axios.get("/article/articles?query="+this.query).then((res)=>{
                        this.articles=res.data.articles;
                    });
