@@ -18,7 +18,12 @@ Vue.use(Vuesax);
 
 Vue.use(VueToast);
 
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 
 
 
