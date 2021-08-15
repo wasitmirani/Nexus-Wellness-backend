@@ -44,9 +44,13 @@ Route::prefix('blog')->group(function () {
 
 
 Route::prefix('app')->group(function () {
-
     Route::prefix('article')->group(function () {
         Route::get('/articles',[ArticleController::class,'getArticles']);
         Route::get('/articles',[ArticleController::class,'getArticles']);
     });
+    Route::prefix('user')->group(function () {
+        Route::get('/login',[UserController::class,'loginUser']);
+    });
+
+
 });
