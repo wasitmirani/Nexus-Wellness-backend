@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
 
 
@@ -48,8 +50,13 @@ Route::prefix('app')->group(function () {
         Route::get('/articles',[ArticleController::class,'getArticles']);
         Route::get('/articles',[ArticleController::class,'getArticles']);
     });
-    Route::prefix('user')->group(function () {
-        Route::get('/login',[UserController::class,'loginUser']);
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('login', [AuthController::class,'login']);
+        Route::post('signup', [AuthController::class,'signup']);
+        Route::group(['middleware' => 'auth:api'], function() {
+            Route::get('logout',[AuthController::class,'logout']);
+            Route::get('user', [AuthController::class,'user']);
+        });
     });
 
 
