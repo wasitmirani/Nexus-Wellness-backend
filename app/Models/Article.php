@@ -14,6 +14,13 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function getThumbnailAttribute($value)
+    {
+        if(!empty($value))
+        return asset('/img/articles/'.$value);
+        else
+        return asset('/img/articles/default.png');
+    }
     public function postArticle($request,$type="create"){
         $requestInput=[
             'title'=>$request->title,

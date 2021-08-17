@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlanesTable extends Migration
+class AddPlaneUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePlanesTable extends Migration
      */
     public function up()
     {
-        Schema::create('planes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('color_code')->nullable();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->string('plane_id')->default(1);
+            // $table->string('thumbnail')->default('default.png');
+
         });
     }
 
@@ -28,6 +28,8 @@ class CreatePlanesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planes');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

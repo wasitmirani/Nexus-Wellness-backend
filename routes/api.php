@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\ArticleController;
 
 
@@ -46,6 +47,7 @@ Route::prefix('blog')->group(function () {
 
 
 Route::prefix('app')->group(function () {
+
     Route::prefix('article')->group(function () {
         Route::get('/articles',[ArticleController::class,'getArticles']);
         Route::get('/articles',[ArticleController::class,'getArticles']);
@@ -56,6 +58,7 @@ Route::prefix('app')->group(function () {
         Route::group(['middleware' => 'auth:api'], function() {
             Route::get('logout',[AuthController::class,'logout']);
             Route::get('user', [AuthController::class,'user']);
+            Route::post('/user/plane',[PlaneController::class,'newUserPlane']);
         });
     });
 

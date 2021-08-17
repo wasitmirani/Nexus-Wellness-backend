@@ -12,9 +12,13 @@ class PlaneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function newUserPlane(Request $request)
     {
-        //
+        $user=$request->user();
+        $user->plane_id=request('plane_id');
+        $user->save();
+
+        return response()->json(['message'=>'update user plane '],201);
     }
 
     /**
