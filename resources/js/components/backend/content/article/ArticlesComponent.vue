@@ -5,7 +5,7 @@
           <div class="col-12">
               <div class="row">
                       <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Articles" :total="500" :value="30" icon="fas fa-user" color="success"></StatisticsCard>
+                          <StatisticsCard label="Articles" :total="articles.length" :value="articles.length" icon="fas fa-user" color="success"></StatisticsCard>
                       </div>
               </div>
           </div>
@@ -15,7 +15,8 @@
                   <h2 class="card-title">
                   <span >All Articles</span>
                         <div class="mt-2">
-                             <vs-input color="#7d33ff" v-model="query" placeholder="Search Articles" />
+
+                             <vs-input color="#7d33ff" v-model="query"  v-on:keyup="searchQuery" placeholder="Search Articles" />
                         </div>
 
                     </h2>
@@ -34,6 +35,7 @@
                         <tr>
                            <th >Title</th>
                             <th >Status</th>
+                            <th >Short Description</th>
                             <th >Description</th>
                             <th >Created By</th>
                             <th >Created</th>
@@ -43,11 +45,13 @@
                      <tbody>
                        <tr v-for="item in articles" :key="item.id">
                               <th scope="row">{{ item.title }}</th>
-                              <td><span class="mt-2 badge rounded-pill bg-primary">Posted</span></td>
+
+                            <td><span class="badge rounded-pill badge-light-primary me-1 mt-2">Posted</span></td>
+                               <td><span >{{ item.short_description }}</span></td>
                               <td>
                                  <p  v-html=" item.description"></p>
                               </td>
-                              <td>{{ item.user.name }}</td>
+                              <td> <span class="badge rounded-pill badge-light-warning me-1">{{ item.user.name }}</span> </td>
                               <td> {{ item.created_at | timeformat }}</td>
                               <td>
                                 <a role="button" @click="edit(item)">
@@ -83,11 +87,25 @@ import Breadcrumb from "../../components/Breadcrumb";
             isloading:false,
         }
     },
+    //    https://preschool.dreamguystech.com/html-template
      methods:{
+           openLoading() {
+          const loading = this.$vs.loading()
+          setTimeout(() => {
+            loading.close()
+          }, 1000)
+        },
              searchQuery(){
+
                 setTimeout(() => {
-                      this.getBlogs();
-                    }, 1000)
+
+                    this.findArticles();
+                    }, 1500)
+           },
+
+           findArticles(){
+                this.openLoading();
+                this.getArticles();
            },
 
                 delete_Item(item){

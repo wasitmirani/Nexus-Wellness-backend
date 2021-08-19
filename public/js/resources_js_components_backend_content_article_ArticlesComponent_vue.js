@@ -256,6 +256,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -270,13 +274,24 @@ __webpack_require__.r(__webpack_exports__);
       isloading: false
     };
   },
+  //    https://preschool.dreamguystech.com/html-template
   methods: {
+    openLoading: function openLoading() {
+      var loading = this.$vs.loading();
+      setTimeout(function () {
+        loading.close();
+      }, 1000);
+    },
     searchQuery: function searchQuery() {
       var _this = this;
 
       setTimeout(function () {
-        _this.getBlogs();
-      }, 1000);
+        _this.findArticles();
+      }, 1500);
+    },
+    findArticles: function findArticles() {
+      this.openLoading();
+      this.getArticles();
     },
     delete_Item: function delete_Item(item) {
       var _this2 = this;
@@ -726,8 +741,8 @@ var render = function() {
                 _c("StatisticsCard", {
                   attrs: {
                     label: "Articles",
-                    total: 500,
-                    value: 30,
+                    total: _vm.articles.length,
+                    value: _vm.articles.length,
                     icon: "fas fa-user",
                     color: "success"
                   }
@@ -756,6 +771,7 @@ var render = function() {
                           color: "#7d33ff",
                           placeholder: "Search Articles"
                         },
+                        on: { keyup: _vm.searchQuery },
                         model: {
                           value: _vm.query,
                           callback: function($$v) {
@@ -806,12 +822,25 @@ var render = function() {
                       _vm._m(2, true),
                       _vm._v(" "),
                       _c("td", [
+                        _c("span", [_vm._v(_vm._s(item.short_description))])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
                         _c("p", {
                           domProps: { innerHTML: _vm._s(item.description) }
                         })
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.user.name))]),
+                      _c("td", [
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "badge rounded-pill badge-light-warning me-1"
+                          },
+                          [_vm._v(_vm._s(item.user.name))]
+                        )
+                      ]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
@@ -880,6 +909,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Short Description")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Description")]),
         _vm._v(" "),
         _c("th", [_vm._v("Created By")]),
@@ -895,9 +926,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("span", { staticClass: "mt-2 badge rounded-pill bg-primary" }, [
-        _vm._v("Posted")
-      ])
+      _c(
+        "span",
+        { staticClass: "badge rounded-pill badge-light-primary me-1 mt-2" },
+        [_vm._v("Posted")]
+      )
     ])
   }
 ]

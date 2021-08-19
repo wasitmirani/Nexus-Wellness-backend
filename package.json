@@ -26,6 +26,9 @@
     },
     "dependencies": {
         "bootstrap-vue": "^2.21.2",
+        "element-ui": "^2.15.5",
+        "moment": "^2.29.1",
+        "sweetalert2": "^11.1.4",
         "vue-i18n": "^8.25.0",
         "vue-router": "^3.5.1",
         "vue-toast-notification": "^0.6.2",

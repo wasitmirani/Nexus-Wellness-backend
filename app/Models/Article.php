@@ -22,10 +22,14 @@ class Article extends Model
         return asset('/img/articles/default.png');
     }
     public function postArticle($request,$type="create"){
+        $thumbnail=SingleImgUpload($request,'img/articles');
+  
         $requestInput=[
             'title'=>$request->title,
             'description'=>$request->description,
             'user_id'=>$request->user_id,
+            'thumbnail'=>$thumbnail,
+            'short_description'=>$request->short_description,
         ];
         if($type=="update"){
             return Article::where('id',$request->id)->update($requestInput);

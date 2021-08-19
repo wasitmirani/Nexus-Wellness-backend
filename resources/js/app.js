@@ -10,22 +10,33 @@ window.Vue = require('vue').default;
 import router from "./router";
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
-
+import ElementUI from 'element-ui'
+import locale from 'element-ui/lib/locale/lang/en'
+import Swal from 'sweetalert2'
+import moment from "moment";
 import Vuesax from 'vuesax'
-
 import 'vuesax/dist/vuesax.css' //Vuesax styles
 Vue.use(Vuesax);
 
-Vue.use(VueToast);
-
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
-
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+window.Swal = Swal;
+window.moment = moment;
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+Vue.use(VueToast);
 
 
+
+Vue.filter("timeformat", function(value) {
+    if (value) {
+        return moment
+            .utc(String(value))
+            .local()
+            .fromNow();
+    }
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -49,6 +60,4 @@ Vue.use(BootstrapVueIcons)
 const app = new Vue({
     el: '#app',
     router,
-
-    methods: {},
 });

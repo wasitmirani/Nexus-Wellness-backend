@@ -24,7 +24,7 @@ const routes = [{
     },
     {
         path: "/update/article/:id",
-        component: () => setComponent("content/CreateArticle")
+        component: () => setComponent("content/article/CreateArticle")
     },
     {
         path: "/blogs",

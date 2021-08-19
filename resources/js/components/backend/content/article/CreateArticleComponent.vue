@@ -20,66 +20,46 @@
                     class="form-control"
                     placeholder="Article Title"
                     v-model="title"
+                    required
                     name="fname-column"
                   />
                 </div>
               </div>
               <div class="col-md-6 col-12">
                 <div class="mb-1">
-                  <label class="form-label" for="last-name-column">Thumbnail</label>
-                     <b-form-file
-                        v-model="thumbnail"
-                        :state="Boolean(thumbnail)"
-                        placeholder="Choose a file or drop it here..."
-                        drop-placeholder="Drop file here..."
-                        ></b-form-file>
-                </div>
-              </div>
-              <div class="col-md-6 col-12">
-                <div class="mb-1">
-                  <label class="form-label" for="city-column">City</label>
-                  <input type="text" id="city-column" class="form-control" placeholder="City" name="city-column" />
-                </div>
-              </div>
-              <div class="col-md-6 col-12">
-                <div class="mb-1">
-                  <label class="form-label" for="country-floating">Country</label>
-                  <input
+                  <label class="form-label" for="last-name-column">Short Description</label>
+                    <input
                     type="text"
-                    id="country-floating"
+                    id="first-name-column"
                     class="form-control"
-                    name="country-floating"
-                    placeholder="Country"
+                    required
+                    placeholder="Article Short Description"
+                    v-model="short_description"
+                    name="fname-column"
                   />
                 </div>
               </div>
-              <div class="col-md-6 col-12">
+              <div class="col-md-12 col-12">
                 <div class="mb-1">
-                  <label class="form-label" for="company-column">Company</label>
-                  <input
-                    type="text"
-                    id="company-column"
-                    class="form-control"
-                    name="company-column"
-                    placeholder="Company"
-                  />
+                  <label class="form-label" for="city-column">description</label>
+                  <vue-editor v-model="description" required></vue-editor>
                 </div>
               </div>
-              <div class="col-md-6 col-12">
-                <div class="mb-1">
-                  <label class="form-label" for="email-id-column">Email</label>
-                  <input
-                    type="email"
-                    id="email-id-column"
-                    class="form-control"
-                    name="email-id-column"
-                    placeholder="Email"
-                  />
+            <div class="col-md-6 col-12">
+                        <div class="mb-1">
+                        <label class="form-label" for="last-name-column">thumbanil</label>
+                               <b-form-file
+                            v-model="thumbnail"
+                            :state="Boolean(thumbnail)"
+                            placeholder="Choose a file or drop it here..."
+                            drop-placeholder="Drop file here..."
+                            ></b-form-file>
+
                 </div>
-              </div>
+            </div>
               <div class="col-12">
-                <button type="reset" class="btn btn-primary me-1">Submit</button>
-                <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                <button type="submit" class="btn btn-primary me-1">Submit</button>
+                <button type="reset" class="btn btn-outline-danger">Reset</button>
               </div>
             </div>
           </form>
@@ -93,8 +73,71 @@
 </template>
 
 <script>
+import { VueEditor } from "vue2-editor";
 export default {
+components: {
+       VueEditor
+  },
+    data(){
+        return {
+                title:"",
+                description:"",
+                editmode:false,
+                thumbnail:null,
+                short_description:"",
+                article:{},
+        }
+    },
+    mounted(){
 
+        if(this.$route.params.id){
+            this.editmode=true;
+            axios.get('/article/get/'+this.$route.params.id).then((res)=>{
+                this.article=res.data.article;
+                this.title=this.article.title;
+                this.short_description=this.short_description;
+                this.description=this.article.description;
+            });
+        }
+        else {
+            this.editmode=false;
+        }
+        console.log(this.$route.params.id);
+    },
+    methods:{
+             openNotification(position = null, color,type="New",message=null) {
+                const noti = this.$vs.notification({
+                    color,
+                    position,
+                    title: type+' Article Success',
+                    text: message,
+                });
+                },
+        onSubmit(){
+            let formdata= new FormData();
+            formdata.append("title",this.title);
+            formdata.append("description",this.description);
+            formdata.append("thumbnail",this.thumbnail);
+            formdata.append("short_description",this.short_description);
+            formdata.append("user_id",user.id);
+            let url="/article/post";
+            if(this.editmode){
+            formdata.append("id",this.article.id);
+            url="/article/update";
+            }
+            axios.post(url,formdata).then((res)=>{
+                 if(this.editmode){
+                    this.openNotification('top-right', 'primary',"Update","This article has been updated");
+                 }
+                 else {
+                      this.openNotification('top-right', 'success',"New","This article has been created");
+                 }
+                      setTimeout(() => {
+                          this.$router.push('/articles');
+                      }, 2000)
+            });
+        }
+    }
 }
 </script>
 
