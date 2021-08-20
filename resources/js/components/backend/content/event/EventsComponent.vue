@@ -1,6 +1,6 @@
 <template>
    <div>
-    <Breadcrumb current_name="events" ></Breadcrumb>
+    <Breadcrumb current_name="Events" ></Breadcrumb>
       <div class="row" id="table-bordered">
           <div class="col-12">
               <div class="row">
