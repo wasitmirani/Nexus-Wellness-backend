@@ -3,6 +3,13 @@
 $sidebar=sideBarMenu();
 // dd($sidebar);
 @endphp
+@push('styles')
+    <style>
+.main-menu.menu-light .navigation>li .active {
+    background: transparent !important;
+}
+    </style>
+@endpush
 
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
@@ -46,9 +53,18 @@ $sidebar=sideBarMenu();
         </li>
         @endif
         @if(!empty($menu['single_link']))
-        <li class=" sidebar-layout">
-           <router-link  to="{{$menu['single_link']['v-route']}}" ><i class="{{$menu['single_link']['icon']}}"></i><span>{{$menu['single_link']['title']}}</span></router-link>
+
+
+        <li class=" nav-item" active-class="active">
+            <router-link  class="d-flex align-items-center " to="{{$menu['single_link']['v-route']}}" >
+                <i class=" {{$menu['single_link']['icon']}}"></i>
+              <span class="menu-title text-truncate">{{$menu['single_link']['title']}}</span>
+            </router-link>
+
         </li>
+        {{-- <li class="nav-item">
+           <router-link  class="d-flex align-items-center" to="{{$menu['single_link']['v-route']}}" ><i class=" {{$menu['single_link']['icon']}}"></i><span>{{$menu['single_link']['title']}}</span></router-link>
+        </li> --}}
         @endif
         @endforeach
       </ul>

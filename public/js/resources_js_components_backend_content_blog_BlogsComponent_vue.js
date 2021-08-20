@@ -33,6 +33,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['home', 'current_name', 'back_url', 'back_name']
 });
@@ -609,41 +630,43 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { attrs: { id: "default-breadcrumb" } }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("nav", { attrs: { "aria-label": "breadcrumb" } }, [
-              _c("ol", { staticClass: "breadcrumb" }, [
-                _c(
-                  "li",
-                  { staticClass: "breadcrumb-item" },
-                  [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")])],
-                  1
-                ),
-                _vm._v(" "),
-                _vm.back_url
-                  ? _c(
-                      "li",
-                      { staticClass: "breadcrumb-item" },
-                      [
-                        _c("router-link", { attrs: { to: _vm.back_url } }, [
-                          _vm._v(_vm._s(_vm.back_name))
-                        ])
-                      ],
-                      1
+    _c("div", { staticClass: "col-12 mb-4" }, [
+      _c("h2", { staticClass: "content-header-title float-start mb-0" }, [
+        _vm._v(" " + _vm._s(_vm.current_name))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "breadcrumb-wrapper" }, [
+        _c("ol", { staticClass: "breadcrumb" }, [
+          _c(
+            "li",
+            {
+              staticClass: "breadcrumb-item ",
+              staticStyle: { "margin-left": "20px" }
+            },
+            [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")])],
+            1
+          ),
+          _vm._v(" "),
+          _vm.back_url
+            ? _c(
+                "li",
+                { staticClass: "breadcrumb-item" },
+                [
+                  _c("router-link", { attrs: { to: _vm.back_url } }, [
+                    _vm._v(
+                      "\n                           " +
+                        _vm._s(_vm.back_name) +
+                        "\n                      "
                     )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "breadcrumb-item active",
-                    attrs: { "aria-current": "page" }
-                  },
-                  [_vm._v(_vm._s(_vm.current_name))]
-                )
-              ])
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item active" }, [
+            _c("a", { staticStyle: { color: "black" }, attrs: { href: "#" } }, [
+              _vm._v(_vm._s(_vm.current_name) + "\n                        ")
             ])
           ])
         ])
@@ -676,21 +699,24 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header align-items-start pb-0" }, [
+      _c("div", { staticClass: "card-header" }, [
         _c("div", [
-          _c("h2", { staticClass: "fw-bolder" }, [_vm._v(_vm._s(this.value))]),
+          _c("h2", { staticClass: "fw-bolder mb-0" }, [
+            _vm._v(_vm._s(_vm.value) + " ")
+          ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.label))])
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(_vm._s(_vm.label) + " "),
+            _c("span", { staticClass: "text-dark" })
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "avatar bg-light-primary p-50" }, [
+        _c("div", { class: "avatar bg-light-" + _vm.color + " p-50 m-0" }, [
           _c("div", { staticClass: "avatar-content" }, [
-            _c("i", { class: "font-medium-5 " + _vm.icon })
+            _c("i", { class: _vm.icon + " font-medium-5" })
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "line-area-chart-5" } })
+      ])
     ])
   ])
 }

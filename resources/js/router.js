@@ -39,6 +39,19 @@ const routes = [{
         path: "/update/blog/:id",
         component: () => setComponent("content/blog/CreateBlog")
     },
+    {
+        path: "/events",
+        component: () => setComponent("content/event/Events")
+
+    },
+    {
+        path: "/new/event",
+        component: () => setComponent("content/blog/CreateEvent")
+    },
+    {
+        path: "/update/event/:id",
+        component: () => setComponent("content/blog/CreateEvent")
+    },
 
 
 ]
@@ -48,9 +61,8 @@ const routes = [{
 // keep it simple for now.
 const router = new VueRouter({
     routes,
-    linkActiveClass: "active",
-    linkExactActiveClass: "active"
-        // short for `routes: routes`
+
+    // short for `routes: routes`
 })
 
 

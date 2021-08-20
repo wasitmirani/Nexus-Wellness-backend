@@ -14,11 +14,33 @@ class Blog extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function getThumbnailAttribute($value)
+    {
+        if(!empty($value))
+        return asset('/img/blogs/'.$value);
+        else
+        return asset('/img/blogs/default.png');
+    }
     public function postBlog($request,$type="create"){
+        if ($request->hasfile('thumbnail')) {
+            $thumbnail=SingleImgUpload($request,'img/articles');
+            }
+            else {
+                if($type=="update"){
+                   $article= Article::where('id',$request->id)->first();
+                   $thumbnail=$article->thumbnail;
+                }
+                else {
+                    $thumbnail="";
+                }
+
+            }
         $requestInput=[
             'title'=>$request->title,
             'description'=>$request->description,
             'user_id'=>$request->user_id,
+            'thumbnail'=>$thumbnail,
+            'short_description'=>$request->short_description,
         ];
         if($type=="update"){
             return Blog::where('id',$request->id)->update($requestInput);

@@ -224,21 +224,24 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header align-items-start pb-0" }, [
+      _c("div", { staticClass: "card-header" }, [
         _c("div", [
-          _c("h2", { staticClass: "fw-bolder" }, [_vm._v(_vm._s(this.value))]),
+          _c("h2", { staticClass: "fw-bolder mb-0" }, [
+            _vm._v(_vm._s(_vm.value) + " ")
+          ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.label))])
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(_vm._s(_vm.label) + " "),
+            _c("span", { staticClass: "text-dark" })
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "avatar bg-light-primary p-50" }, [
+        _c("div", { class: "avatar bg-light-" + _vm.color + " p-50 m-0" }, [
           _c("div", { staticClass: "avatar-content" }, [
-            _c("i", { class: "font-medium-5 " + _vm.icon })
+            _c("i", { class: _vm.icon + " font-medium-5" })
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "line-area-chart-5" } })
+      ])
     ])
   ])
 }

@@ -8,6 +8,10 @@ class HelperComponent
     public static function SideBar()
     {
         return [
+
+            [
+                "single_link" => setSingleLink('Dashboard ', "fas fa-tachometer-alt", null, null, null, '/'),
+            ],
             // [
             //     "heading" => "Management",
             //     "menu" => [
@@ -40,7 +44,7 @@ class HelperComponent
             [
                 "heading" => "Apps & Pages",
                 "menu" => [
-                    "title" => 'App Management',
+                    "title" => "Content",
                     "icon" => "home",
                     "color_code" => "",
                     "can" => "",
@@ -61,6 +65,14 @@ class HelperComponent
                             null,
                             null,
                             "/blogs",
+                        ),
+                        setSubMenu(
+                            null,
+                            "Events",
+                            "feed",
+                            null,
+                            null,
+                            "/events",
                         ),
 
                     ]

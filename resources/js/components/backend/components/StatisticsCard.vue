@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- <div class="card">
+    <div class="card">
         <div class="card-header">
           <div>
-            <h2 class="fw-bolder mb-0">{{ getvalues() }}%</h2>
+            <h2 class="fw-bolder mb-0">{{ value}} </h2>
             <p class="card-text">{{label}} <span class="text-dark"></span></p>
           </div>
           <div :class="'avatar bg-light-'+color+ ' p-50 m-0'">
@@ -12,8 +12,8 @@
             </div>
           </div>
         </div>
-      </div> -->
-        <div class="card">
+      </div>
+        <!-- <div class="card">
         <div class="card-header align-items-start pb-0">
           <div>
             <h2 class="fw-bolder">{{this.value}}</h2>
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div id="line-area-chart-5"></div>
-      </div>
+      </div> -->
   </div>
 </template>
 
