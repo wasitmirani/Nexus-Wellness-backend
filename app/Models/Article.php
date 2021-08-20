@@ -22,8 +22,20 @@ class Article extends Model
         return asset('/img/articles/default.png');
     }
     public function postArticle($request,$type="create"){
+
+        if ($request->hasfile('thumbnail')) {
         $thumbnail=SingleImgUpload($request,'img/articles');
-  
+        }
+        else {
+            if($type=="update"){
+               $article= Article::where('id',$request->id)->first();
+               $thumbnail=$article->thumbnail;
+            }
+            else {
+                $thumbnail="";
+            }
+
+        }
         $requestInput=[
             'title'=>$request->title,
             'description'=>$request->description,

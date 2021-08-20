@@ -57,9 +57,13 @@
 
                 </div>
             </div>
-              <div class="col-12">
+              <div class="col-12" v-if="!editmode">
                 <button type="submit" class="btn btn-primary me-1">Submit</button>
                 <button type="reset" class="btn btn-outline-danger">Reset</button>
+              </div>
+                <div class="col-12" v-else>
+                <button type="submit" class="btn btn-success me-1">Update</button>
+                <button type="button" class="btn btn-outline-danger" @click="goBack">Cancel</button>
               </div>
             </div>
           </form>
@@ -95,7 +99,7 @@ components: {
             axios.get('/article/get/'+this.$route.params.id).then((res)=>{
                 this.article=res.data.article;
                 this.title=this.article.title;
-                this.short_description=this.short_description;
+                this.short_description=this.article.short_description;
                 this.description=this.article.description;
             });
         }
@@ -105,8 +109,13 @@ components: {
         console.log(this.$route.params.id);
     },
     methods:{
+        goBack(){
+            // window.history.back();
+            this.$router.push('/articles');
+        },
              openNotification(position = null, color,type="New",message=null) {
                 const noti = this.$vs.notification({
+                    duration:3000,
                     color,
                     position,
                     title: type+' Article Success',

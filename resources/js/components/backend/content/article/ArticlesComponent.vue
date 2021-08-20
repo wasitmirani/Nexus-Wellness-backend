@@ -4,8 +4,9 @@
       <div class="row" id="table-bordered">
           <div class="col-12">
               <div class="row">
+
                       <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Articles" :total="articles.length" :value="articles.length" icon="fas fa-user" color="success"></StatisticsCard>
+                          <StatisticsCard label="Articles" :total="articles.length" :value="articles.length" icon="fas fa-file-alt" color="success"></StatisticsCard>
                       </div>
               </div>
           </div>
@@ -148,6 +149,10 @@ import Breadcrumb from "../../components/Breadcrumb";
    }
 </script>
 <style lang="scss" >
+h4 {
+
+    color: white;
+}
 
 .vs-input {
     border: 2px solid transparent;

@@ -21,7 +21,7 @@
           </div>
           <div class="avatar bg-light-primary p-50">
             <div class="avatar-content">
-              <i data-feather="monitor" class="font-medium-5"></i>
+              <i  :class="'font-medium-5 '+icon"></i>
             </div>
           </div>
         </div>

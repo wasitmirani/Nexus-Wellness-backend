@@ -260,6 +260,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -349,7 +350,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".vs-input {\n  border: 2px solid transparent;\n  background: rgba(var(--vs-gray-2), 1);\n  color: rgba(var(--vs-text), 1);\n  padding: 7px 13px;\n  border-radius: inherit;\n  transition: all 0.25s ease;\n  padding-left: 10px;\n  width: 100% !important;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "h4 {\n  color: white;\n}\n.vs-input {\n  border: 2px solid transparent;\n  background: rgba(var(--vs-gray-2), 1);\n  color: rgba(var(--vs-text), 1);\n  padding: 7px 13px;\n  border-radius: inherit;\n  transition: all 0.25s ease;\n  padding-left: 10px;\n  width: 100% !important;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -682,28 +683,18 @@ var render = function() {
           _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.label))])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "avatar bg-light-primary p-50" }, [
+          _c("div", { staticClass: "avatar-content" }, [
+            _c("i", { class: "font-medium-5 " + _vm.icon })
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { attrs: { id: "line-area-chart-5" } })
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar bg-light-primary p-50" }, [
-      _c("div", { staticClass: "avatar-content" }, [
-        _c("i", {
-          staticClass: "font-medium-5",
-          attrs: { "data-feather": "monitor" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -743,7 +734,7 @@ var render = function() {
                     label: "Articles",
                     total: _vm.articles.length,
                     value: _vm.articles.length,
-                    icon: "fas fa-user",
+                    icon: "fas fa-file-alt",
                     color: "success"
                   }
                 })

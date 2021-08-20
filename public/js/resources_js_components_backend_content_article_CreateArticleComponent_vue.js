@@ -86,6 +86,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -109,7 +113,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/article/get/' + this.$route.params.id).then(function (res) {
         _this.article = res.data.article;
         _this.title = _this.article.title;
-        _this.short_description = _this.short_description;
+        _this.short_description = _this.article.short_description;
         _this.description = _this.article.description;
       });
     } else {
@@ -119,12 +123,17 @@ __webpack_require__.r(__webpack_exports__);
     console.log(this.$route.params.id);
   },
   methods: {
+    goBack: function goBack() {
+      // window.history.back();
+      this.$router.push('/articles');
+    },
     openNotification: function openNotification() {
       var position = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
       var color = arguments.length > 1 ? arguments[1] : undefined;
       var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "New";
       var message = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
       var noti = this.$vs.notification({
+        duration: 3000,
         color: color,
         position: position,
         title: type + ' Article Success',
@@ -14054,7 +14063,46 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(1)
+                    !_vm.editmode
+                      ? _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary me-1",
+                              attrs: { type: "submit" }
+                            },
+                            [_vm._v("Submit")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-outline-danger",
+                              attrs: { type: "reset" }
+                            },
+                            [_vm._v("Reset")]
+                          )
+                        ])
+                      : _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-success me-1",
+                              attrs: { type: "submit" }
+                            },
+                            [_vm._v("Update")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-outline-danger",
+                              attrs: { type: "button" },
+                              on: { click: _vm.goBack }
+                            },
+                            [_vm._v("Cancel")]
+                          )
+                        ])
                   ])
                 ]
               )
@@ -14072,24 +14120,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("h4", { staticClass: "card-title" }, [_vm._v("New Article")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary me-1", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-danger", attrs: { type: "reset" } },
-        [_vm._v("Reset")]
-      )
     ])
   }
 ]

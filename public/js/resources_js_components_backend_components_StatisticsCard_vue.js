@@ -231,28 +231,18 @@ var render = function() {
           _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.label))])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "avatar bg-light-primary p-50" }, [
+          _c("div", { staticClass: "avatar-content" }, [
+            _c("i", { class: "font-medium-5 " + _vm.icon })
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { attrs: { id: "line-area-chart-5" } })
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar bg-light-primary p-50" }, [
-      _c("div", { staticClass: "avatar-content" }, [
-        _c("i", {
-          staticClass: "font-medium-5",
-          attrs: { "data-feather": "monitor" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
