@@ -1,21 +1,21 @@
 <template>
    <div>
-    <Breadcrumb current_name="blogs" ></Breadcrumb>
+    <Breadcrumb current_name="events" ></Breadcrumb>
       <div class="row" id="table-bordered">
           <div class="col-12">
               <div class="row">
 
                          <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Total Articles" :total="blogs.length" :value="blogs.length" icon="fas fa-file-alt" color="primary"></StatisticsCard>
+                          <StatisticsCard label="Total Events" :total="events.length" :value="0" icon="fas fa-file-alt" color="primary"></StatisticsCard>
                       </div>
                     <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Publish" :total="blogs.length" :value="0" icon="fas fa-file-alt" color="success"></StatisticsCard>
+                          <StatisticsCard label="Publish" :total="events.length" :value="0" icon="fas fa-file-alt" color="success"></StatisticsCard>
                       </div>
                       <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Pending" :total="blogs.length" :value="1" icon="fas fa-file-alt" color="warning"></StatisticsCard>
+                          <StatisticsCard label="Pending" :total="events.length" :value="1" icon="fas fa-file-alt" color="warning"></StatisticsCard>
                       </div>
                       <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Trash" :total="blogs.length" :value="1" icon="fas fa-file-alt" color="danger"></StatisticsCard>
+                          <StatisticsCard label="Trash" :total="events.length" :value="1" icon="fas fa-file-alt" color="danger"></StatisticsCard>
                       </div>
               </div>
           </div>
@@ -23,15 +23,15 @@
             <div class="card">
                <div class="card-header">
                   <h2 class="card-title">
-                  <span >All Blogs</span>
+                  <span >All Events</span>
                         <div class="mt-2">
 
-                             <vs-input color="#7d33ff" v-model="query"  v-on:keyup="searchQuery" placeholder="Search Blogs" />
+                             <vs-input color="#7d33ff" v-model="query"  v-on:keyup="searchQuery" placeholder="Search events" />
                         </div>
 
                     </h2>
                       <vs-button size="large"    gradient  to="/new/blog" :active="true">
-                            Add Blog
+                            Add Event
                         </vs-button>
                </div>
                <div class="card-body">
@@ -53,7 +53,7 @@
                         </tr>
                      </thead>
                      <tbody>
-                       <tr v-for="item in blogs" :key="item.id">
+                       <tr v-for="item in events" :key="item.id">
                               <th scope="row">{{ item.title }}</th>
 
                             <td><span class="badge rounded-pill badge-light-primary me-1 mt-2">Posted</span></td>
@@ -92,7 +92,7 @@ import Breadcrumb from "../../components/Breadcrumb";
     },
     data(){
         return {
-            blogs:{},
+            events:{},
             query:"",
             isloading:false,
         }
@@ -109,13 +109,13 @@ import Breadcrumb from "../../components/Breadcrumb";
 
                 setTimeout(() => {
 
-                    this.findblogs();
+                    this.findevents();
                     }, 1500)
            },
 
-           findblogs(){
+           findevents(){
                 this.openLoading();
-                this.getblogs();
+                this.getevents();
            },
 
                 delete_Item(item){
@@ -134,17 +134,17 @@ import Breadcrumb from "../../components/Breadcrumb";
                                                 'Deleted!',
                                                 'Your file has been deleted.',
                                                 'success')
-                                                this.getblogs();
+                                                this.getevents();
 
                                 });
 
                             }
                             })
                 },
-               getblogs(){
+               getevents(){
 
-                   axios.get("/blog/blogs?query="+this.query).then((res)=>{
-                       this.blogs=res.data.blogs;
+                   axios.get("/blog/events?query="+this.query).then((res)=>{
+                       this.events=res.data.events;
                    });
                },
                edit(item){
@@ -152,7 +152,7 @@ import Breadcrumb from "../../components/Breadcrumb";
                }
        },
        mounted(){
-           this.getblogs();
+           this.getevents();
        }
 
    }
