@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\ArticleController;
 
@@ -42,6 +43,16 @@ Route::prefix('blog')->group(function () {
     Route::post('/update',[BlogController::class,'updateBlog']);
     Route::get('/delete/{id?}',[BlogController::class,'deleteBlog']);
 });
+
+
+Route::prefix('event')->group(function () {
+    Route::get('/events',[EventController::class,'getEvents']);
+    Route::post('/post',[EventController::class,'createEvent']);
+    Route::get('/get/{id?}',[EventController::class,'getEvent']);
+    Route::post('/update',[EventController::class,'updateEvent']);
+    Route::get('/delete/{id?}',[EventController::class,'deleteEvent']);
+});
+
 
 
 

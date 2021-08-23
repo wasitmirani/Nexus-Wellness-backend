@@ -46,11 +46,11 @@ const routes = [{
     },
     {
         path: "/new/event",
-        component: () => setComponent("content/blog/CreateEvent")
+        component: () => setComponent("content/event/CreateEvent")
     },
     {
         path: "/update/event/:id",
-        component: () => setComponent("content/blog/CreateEvent")
+        component: () => setComponent("content/event/CreateEvent")
     },
 
 

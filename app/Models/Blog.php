@@ -23,12 +23,12 @@ class Blog extends Model
     }
     public function postBlog($request,$type="create"){
         if ($request->hasfile('thumbnail')) {
-            $thumbnail=SingleImgUpload($request,'img/articles');
+            $thumbnail=SingleImgUpload($request,'img/blogs');
             }
             else {
                 if($type=="update"){
-                   $article= Article::where('id',$request->id)->first();
-                   $thumbnail=$article->thumbnail;
+                   $blog= Blog::where('id',$request->id)->first();
+                   $thumbnail=$blog->thumbnail;
                 }
                 else {
                     $thumbnail="";

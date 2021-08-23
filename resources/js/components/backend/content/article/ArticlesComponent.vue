@@ -9,13 +9,13 @@
                           <StatisticsCard label="Total Articles" :total="articles.length" :value="articles.length" icon="fas fa-file-alt" color="primary"></StatisticsCard>
                       </div>
                     <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Publish" :total="articles.length" :value="0" icon="fas fa-file-alt" color="success"></StatisticsCard>
+                          <StatisticsCard label="Publish" :total="articles.length" :value="articles.length" icon="fas fa-file-alt" color="success"></StatisticsCard>
                       </div>
                       <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Pending" :total="articles.length" :value="1" icon="fas fa-file-alt" color="warning"></StatisticsCard>
+                          <StatisticsCard label="Pending" :total="articles.length" :value="0" icon="fas fa-file-alt" color="warning"></StatisticsCard>
                       </div>
                       <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Trash" :total="articles.length" :value="1" icon="fas fa-file-alt" color="danger"></StatisticsCard>
+                          <StatisticsCard label="Trash" :total="articles.length" :value="0" icon="fas fa-file-alt" color="danger"></StatisticsCard>
                       </div>
               </div>
           </div>

@@ -785,7 +785,7 @@ var render = function() {
                   attrs: {
                     label: "Publish",
                     total: _vm.articles.length,
-                    value: 0,
+                    value: _vm.articles.length,
                     icon: "fas fa-file-alt",
                     color: "success"
                   }
@@ -802,7 +802,7 @@ var render = function() {
                   attrs: {
                     label: "Pending",
                     total: _vm.articles.length,
-                    value: 1,
+                    value: 0,
                     icon: "fas fa-file-alt",
                     color: "warning"
                   }
@@ -819,7 +819,7 @@ var render = function() {
                   attrs: {
                     label: "Trash",
                     total: _vm.articles.length,
-                    value: 1,
+                    value: 0,
                     icon: "fas fa-file-alt",
                     color: "danger"
                   }

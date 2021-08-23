@@ -6,16 +6,16 @@
               <div class="row">
 
                          <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Total Events" :total="events.length" :value="0" icon="fas fa-file-alt" color="primary"></StatisticsCard>
+                          <StatisticsCard label="Total Events" :total="events.length" :value="events.length" icon="fas fa-file-alt" color="primary"></StatisticsCard>
                       </div>
                     <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Publish" :total="events.length" :value="0" icon="fas fa-file-alt" color="success"></StatisticsCard>
+                          <StatisticsCard label="Publish" :total="events.length" :value="events.length" icon="fas fa-file-alt" color="success"></StatisticsCard>
                       </div>
                       <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Pending" :total="events.length" :value="1" icon="fas fa-file-alt" color="warning"></StatisticsCard>
+                          <StatisticsCard label="Pending" :total="events.length" :value="0" icon="fas fa-file-alt" color="warning"></StatisticsCard>
                       </div>
                       <div class="col-lg-3 col-sm-6 col-12">
-                          <StatisticsCard label="Trash" :total="events.length" :value="1" icon="fas fa-file-alt" color="danger"></StatisticsCard>
+                          <StatisticsCard label="Trash" :total="events.length" :value="0" icon="fas fa-file-alt" color="danger"></StatisticsCard>
                       </div>
               </div>
           </div>
@@ -30,7 +30,7 @@
                         </div>
 
                     </h2>
-                      <vs-button size="large"    gradient  to="/new/blog" :active="true">
+                      <vs-button size="large"    gradient  to="/new/event" :active="true">
                             Add Event
                         </vs-button>
                </div>
@@ -129,7 +129,7 @@ import Breadcrumb from "../../components/Breadcrumb";
                             confirmButtonText: 'Yes, delete it!'
                             }).then((result) => {
                             if (result.isConfirmed) {
-                                axios.get('/blog/delete/'+item.id).then((res)=>{
+                                axios.get('/event/delete/'+item.id).then((res)=>{
                                             Swal.fire(
                                                 'Deleted!',
                                                 'Your file has been deleted.',
@@ -143,12 +143,12 @@ import Breadcrumb from "../../components/Breadcrumb";
                 },
                getevents(){
 
-                   axios.get("/blog/events?query="+this.query).then((res)=>{
+                   axios.get("event/events?query="+this.query).then((res)=>{
                        this.events=res.data.events;
                    });
                },
                edit(item){
-                this.$router.push('/update/blog/'+item.id);
+                this.$router.push('/update/event/'+item.id);
                }
        },
        mounted(){

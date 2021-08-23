@@ -337,7 +337,7 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         if (result.isConfirmed) {
-          axios.get('/blog/delete/' + item.id).then(function (res) {
+          axios.get('/event/delete/' + item.id).then(function (res) {
             Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
 
             _this2.getevents();
@@ -348,12 +348,12 @@ __webpack_require__.r(__webpack_exports__);
     getevents: function getevents() {
       var _this3 = this;
 
-      axios.get("/blog/events?query=" + this.query).then(function (res) {
+      axios.get("event/events?query=" + this.query).then(function (res) {
         _this3.events = res.data.events;
       });
     },
     edit: function edit(item) {
-      this.$router.push('/update/blog/' + item.id);
+      this.$router.push('/update/event/' + item.id);
     }
   },
   mounted: function mounted() {
@@ -768,7 +768,7 @@ var render = function() {
                   attrs: {
                     label: "Total Events",
                     total: _vm.events.length,
-                    value: 0,
+                    value: _vm.events.length,
                     icon: "fas fa-file-alt",
                     color: "primary"
                   }
@@ -785,7 +785,7 @@ var render = function() {
                   attrs: {
                     label: "Publish",
                     total: _vm.events.length,
-                    value: 0,
+                    value: _vm.events.length,
                     icon: "fas fa-file-alt",
                     color: "success"
                   }
@@ -802,7 +802,7 @@ var render = function() {
                   attrs: {
                     label: "Pending",
                     total: _vm.events.length,
-                    value: 1,
+                    value: 0,
                     icon: "fas fa-file-alt",
                     color: "warning"
                   }
@@ -819,7 +819,7 @@ var render = function() {
                   attrs: {
                     label: "Trash",
                     total: _vm.events.length,
-                    value: 1,
+                    value: 0,
                     icon: "fas fa-file-alt",
                     color: "danger"
                   }
@@ -868,7 +868,7 @@ var render = function() {
                     attrs: {
                       size: "large",
                       gradient: "",
-                      to: "/new/blog",
+                      to: "/new/event",
                       active: true
                     }
                   },
