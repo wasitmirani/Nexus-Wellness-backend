@@ -37,6 +37,22 @@ Vue.filter("timeformat", function(value) {
             .fromNow();
     }
 });
+Vue.filter("planeStatus", function(value) {
+    switch (value) {
+        case "1":
+            return `<span class = "badge rounded-pill badge-light-primary me-1 mt-2" > Free Membership </span>`;
+            break;
+        case "2 ":
+            return `<span class = "badge rounded-pill badge-light-success me-1 mt-2" > Customize  Membership </span>`;
+            break;
+        case "3 ":
+            return `<span class = "badge rounded-pill badge-light-info me-1 mt-2" > Premium Membership </span>`;
+            break;
+        default:
+            return `<span class = "badge rounded-pill badge-light-primary me-1 mt-2" > Free Membership </span>`;
+            break;
+    }
+});
 
 /**
  * The following block of code may be used to automatically register your

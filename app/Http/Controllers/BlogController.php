@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
+use App\Models\Event;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -12,6 +15,24 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function dashboard(){
+        $blogs=Blog::all()->count();
+        $articles=Article::all()->count();
+        $events=Event::all()->count();
+        $users_collection=User::all();
+        $users_collection=collect($users_collection);
+        $users=$users_collection->count();
+        $free_members=$users_collection->where('plane_id',1)->count();
+        $customize_members=$users_collection->where('plane_id',2)->count();
+        $premium_members=$users_collection->where('plane_id',3)->count();
+        $users=(object)[
+            'total'=>$users,
+            'free_members'=>$free_members,
+            'customize_members'=>$customize_members,
+            'premium_members'=>$premium_members,
+        ];
+        return response()->json(['blogs'=>$blogs,'articles'=>$articles,'events'=>$events,'users'=>$users]);
+    }
     public function getBlogs()
     {
         //

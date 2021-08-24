@@ -53,6 +53,20 @@ const routes = [{
         component: () => setComponent("content/event/CreateEvent")
     },
 
+    {
+        path: "/users",
+        component: () => setComponent("user/Users")
+
+    },
+    {
+        path: "/new/event",
+        component: () => setComponent("user/Users")
+    },
+    {
+        path: "/update/event/:id",
+        component: () => setComponent("user/Users")
+    },
+
 
 ]
 

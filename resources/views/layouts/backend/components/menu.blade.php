@@ -33,7 +33,7 @@ $sidebar=sideBarMenu();
        @if(!empty($menu['menu']))
         <li class=" nav-item">
             <a class="d-flex align-items-center" href="#">
-                <i data-feather="{{$menu['menu']['icon']}}">
+                <i class="{{$menu['menu']['icon']}}">
             </i><span class="menu-title text-truncate" data-i18n="{{$menu['menu']['title']}}">{{$menu['menu']['title']}}</span>
             <span class="badge badge-light-warning rounded-pill ms-auto me-1"></span>
           </a>

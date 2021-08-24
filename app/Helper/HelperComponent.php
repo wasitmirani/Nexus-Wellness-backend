@@ -15,7 +15,9 @@ class HelperComponent
              [
                 "heading" => "Apps & Pages",
              ],
-
+             [
+                "single_link" => setSingleLink('Users ', "fas fa-users", null, null, null, '/users'),
+            ],
             [
                 "single_link" => setSingleLink('Articles ', "fas fa-book", null, null, null, '/articles'),
             ],
@@ -27,35 +29,38 @@ class HelperComponent
             [
                 "single_link" => setSingleLink('Events ', "far fa-calendar-plus", null, null, null, '/events'),
             ],
-            // [
-            //     "heading" => "Management",
-            //     "menu" => [
-            //         "title" => 'User Management',
-            //         "icon" => "people",
-            //         "color_code" => "",
-            //         "can" => "",
-            //         "v-can" => "",
-            //         "sub_menu" => [
-            //             setSubMenu(
-            //                 null,
-            //                 "Users",
-            //                 "supervisor_account",
-            //                 null,
-            //                 null,
-            //                 "/users",
-            //             ),
-            //             setSubMenu(
-            //                 null,
-            //                 "Roles",
-            //                 null,
-            //                 null,
-            //                 null,
-            //                 "/roles",
-            //             ),
-            //         ]
-            //     ]
+            [
+                "heading" => "Payment & History",
+            ],
+            [
 
-            // ],
+                "menu" => [
+                    "title" => 'Payment Transactions',
+                    "icon" => "fas fa-money-check",
+                    "color_code" => "",
+                    "can" => "",
+                    "v-can" => "",
+                    "sub_menu" => [
+                        setSubMenu(
+                            null,
+                            "Stripe Payment",
+                            "supervisor_account",
+                            null,
+                            null,
+                            "/stripe",
+                        ),
+                        setSubMenu(
+                            null,
+                            "Paypal",
+                            null,
+                            null,
+                            null,
+                            "/paypal",
+                        ),
+                    ]
+                ]
+
+            ],
             // [
             //     "heading" => "Apps & Pages",
             //     "menu" => [
