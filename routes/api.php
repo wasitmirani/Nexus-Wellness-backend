@@ -70,10 +70,11 @@ Route::prefix('event')->group(function () {
 
 Route::prefix('app')->group(function () {
 
-    Route::prefix('article')->group(function () {
-        Route::get('/articles',[ArticleController::class,'getArticles']);
-        Route::get('/articles',[ArticleController::class,'getArticles']);
-    });
+
+    Route::get('/articles',[ArticleController::class,'getArticles']);
+    Route::get('/blogs',   [BlogController::class,'getBlogs']);
+    Route::get('/events',  [EventController::class,'getEvents']);
+
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login', [AuthController::class,'login']);
         Route::post('signup', [AuthController::class,'signup']);

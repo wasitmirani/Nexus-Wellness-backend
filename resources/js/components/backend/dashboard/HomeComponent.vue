@@ -78,7 +78,7 @@
               <div class="d-flex flex-row">
                    <div class="avatar bg-light-info p-50 m-0">
                     <div class="avatar-content">
-  <i  class="fas fa-users font-medium-5"></i>
+                    <i  class="fas fa-users font-medium-5"></i>
                 </div>
                 </div>
                 <div class="my-auto">
