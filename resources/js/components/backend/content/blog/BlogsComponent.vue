@@ -142,7 +142,6 @@ import Breadcrumb from "../../components/Breadcrumb";
                             })
                 },
                getblogs(){
-
                    axios.get("/blog/blogs?query="+this.query).then((res)=>{
                        this.blogs=res.data.blogs;
                    });
