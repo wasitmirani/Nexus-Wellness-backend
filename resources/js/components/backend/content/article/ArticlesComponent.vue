@@ -54,12 +54,16 @@
                      </thead>
                      <tbody>
                        <tr v-for="item in articles" :key="item.id">
-                              <th scope="row">{{ item.title }}</th>
+                              <th scope="row">
+                                     <a role="button" @click="edit(item)">
+                                  {{ item.title }}
+                                     </a>
+                                  </th>
 
-                            <td><span class="badge rounded-pill badge-light-primary me-1 mt-2">Posted</span></td>
-                               <td><span >{{ item.short_description }}</span></td>
+                            <td>   <a role="button" @click="edit(item)"><span class="badge rounded-pill badge-light-primary me-1 mt-2">Posted</span></a></td>
+                               <td>   <a role="button" @click="edit(item)"><span >{{ item.short_description }}</span></a></td>
                               <td>
-                                 <p  v-html=" item.description"></p>
+                                 <p  v-html="item.description.substring(0,50)">...</p>
                               </td>
                               <td> <span class="badge rounded-pill badge-light-warning me-1">{{ item.user.name }}</span> </td>
                               <td> {{ item.created_at | timeformat }}</td>

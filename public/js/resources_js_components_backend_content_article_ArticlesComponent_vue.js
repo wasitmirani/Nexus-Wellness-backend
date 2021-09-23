@@ -291,6 +291,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -893,19 +897,77 @@ var render = function() {
                   _vm._l(_vm.articles, function(item) {
                     return _c("tr", { key: item.id }, [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(_vm._s(item.title))
+                        _c(
+                          "a",
+                          {
+                            attrs: { role: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.edit(item)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                               " +
+                                _vm._s(item.title) +
+                                "\n                                  "
+                            )
+                          ]
+                        )
                       ]),
                       _vm._v(" "),
-                      _vm._m(2, true),
-                      _vm._v(" "),
                       _c("td", [
-                        _c("span", [_vm._v(_vm._s(item.short_description))])
+                        _c(
+                          "a",
+                          {
+                            attrs: { role: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.edit(item)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "span",
+                              {
+                                staticClass:
+                                  "badge rounded-pill badge-light-primary me-1 mt-2"
+                              },
+                              [_vm._v("Posted")]
+                            )
+                          ]
+                        )
                       ]),
                       _vm._v(" "),
                       _c("td", [
-                        _c("p", {
-                          domProps: { innerHTML: _vm._s(item.description) }
-                        })
+                        _c(
+                          "a",
+                          {
+                            attrs: { role: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.edit(item)
+                              }
+                            }
+                          },
+                          [_c("span", [_vm._v(_vm._s(item.short_description))])]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "p",
+                          {
+                            domProps: {
+                              innerHTML: _vm._s(
+                                item.description.substring(0, 50)
+                              )
+                            }
+                          },
+                          [_vm._v("...")]
+                        )
                       ]),
                       _vm._v(" "),
                       _c("td", [
@@ -996,18 +1058,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "span",
-        { staticClass: "badge rounded-pill badge-light-primary me-1 mt-2" },
-        [_vm._v("Posted")]
-      )
     ])
   }
 ]
